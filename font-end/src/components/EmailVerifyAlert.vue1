@@ -1,0 +1,24 @@
+<template>
+  <div v-if="username && email_verify != 1">
+    <v-alert class="mx-auto" prominent type="warning" dismissibe>
+      <v-row align="center">
+        <v-col class="grow">您的邮件地址未验证，一旦密码丢失将无法更改，请验证您的地址邮件！</v-col>
+        <v-col class="shrink">
+          <v-btn @click="jump('Settings')">去验证</v-btn>
+        </v-col>
+      </v-row>
+    </v-alert>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {},
+  computed: {
+    ...mapState({
+      username: state => state.user.username,
+      email_verify: state => state.user.email_verify
+    }),
+  },
+};
+</script>
