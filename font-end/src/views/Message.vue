@@ -1,7 +1,7 @@
 <template>
   <with-app-bar>
     <v-breadcrumbs :items="Link_items"></v-breadcrumbs>
-    <v-list three-line>
+    <v-list v-if="maxpage > 0">
       <template v-for="(item) in Msgitem">
         <v-list-item :key="item.msg_itle" @click="read(item._id)">
           <v-list-item-avatar>
@@ -26,7 +26,12 @@
         </v-list-item>
       </template>
     </v-list>
-    <v-card class="elevation-0 pt-2 mx-auto">
+
+    <div class="c-auto" v-else>
+      <v-icon>mdi-package-variant</v-icon>暂无信息
+    </div>
+
+    <v-card v-if="maxpage > 1" class="elevation-0 pt-2 mx-auto">
       <v-pagination v-model="page" :length="maxpage"></v-pagination>
     </v-card>
   </with-app-bar>
@@ -91,3 +96,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.c-auto {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+}
+</style>

@@ -1,5 +1,6 @@
 <template>
   <v-app-bar app color="white" light elevate-on-scroll scroll-target="#scrolling-techniques-7">
+    <v-app-bar-nav-icon color="blue" transition="scale-transition" @click.stop="onToggleDrawer"></v-app-bar-nav-icon>
     <div class="d-flex align-center" @click="$router.push('/')">
       <v-img
         alt="Vuetify Logo"
@@ -19,7 +20,6 @@
         width="100"
       />-->
     </div>
-    <v-app-bar-nav-icon color="blue" transition="scale-transition" @click.stop="onToggleDrawer"></v-app-bar-nav-icon>
     <v-toolbar-title v-if="title != ''">{{ title }}</v-toolbar-title>
     <v-spacer></v-spacer>
     <div v-if="!token">
