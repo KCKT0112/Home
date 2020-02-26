@@ -1,14 +1,14 @@
 const express = require('express');
 const Article = require('../../db/models/ArticleModel'); // 引入模型
-const { callback } = require('../../helpers/Other');
+const { callback, removeHTMLTag } = require('../../helpers/Other');
 
 const router = express.Router();
 
 router.post('/Add_Article', (req, res) => {
     let insertObj = {
         masterid: req.user.id,
-        title: req.body.title,
-        tag: req.body.tag,
+        title: removeHTMLTag(req.body.title),
+        tag: removeHTMLTag(req.body.tag),
         content: req.body.content
     };
     if (!insertObj.title) {
